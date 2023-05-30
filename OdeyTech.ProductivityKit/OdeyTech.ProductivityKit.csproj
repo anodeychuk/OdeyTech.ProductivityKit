@@ -7,12 +7,16 @@
     <Product>OdeyTech.ProductivityKit</Product>
     <Copyright>Copyright © $(Company) 2023.</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <AssemblyVersion>0.0.17</AssemblyVersion>
+    <AssemblyVersion>0.0.19</AssemblyVersion>
     <Authors>$(Company)</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Package contains tools to improve the performance and usability of C# .NET development.</Description>
     <RepositoryUrl>https://github.com/anodeychuk/OdeyTech.ProductivityKit</RepositoryUrl>
     <Version>$(AssemblyVersion)</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/anodeychuk/OdeyTech.ProductivityKit</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageTags>Productivity, OdeyTech, Extensions, Monads, Reflection, FileManagement, BuildInformation, Utilities</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -20,6 +24,16 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
