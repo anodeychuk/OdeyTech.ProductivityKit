@@ -7,6 +7,7 @@
 // --------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,7 +34,7 @@ namespace OdeyTech.ProductivityKit.Extension
     /// </example>
     public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
     {
-      if (collection.IsNullOrEmpty())
+      if (collection.IsNullOrEmpty() || action == null)
       {
         return;
       }
@@ -43,6 +44,13 @@ namespace OdeyTech.ProductivityKit.Extension
         action?.Invoke(item);
       }
     }
+
+    /// <summary>
+    /// Executes the specified action for each item in the collection.
+    /// </summary>
+    /// <param name="collection">The collection to process.</param>
+    /// <param name="action">The action to execute for each item.</param>
+    public static void ForEach(this IEnumerable collection, Action<object> action) => collection.Cast<object>().ForEach(action);
 
     /// <summary>
     /// Determines whether the collection is not null and contains at least one item.
@@ -56,7 +64,7 @@ namespace OdeyTech.ProductivityKit.Extension
     /// After:
     ///     var isFilled = collection.IsFilled();
     /// </example>
-    public static bool IsFilled<T>(this IEnumerable<T> collection) => !IsNullOrEmpty(collection);
+    public static bool IsFilled<T>(this IEnumerable<T> collection) => !collection.IsNullOrEmpty();
 
     /// <summary>
     /// Determines whether the collection is null or contains no items.

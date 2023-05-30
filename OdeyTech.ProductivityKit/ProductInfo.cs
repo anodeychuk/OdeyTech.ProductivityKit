@@ -71,8 +71,8 @@ namespace OdeyTech.ProductivityKit
     private TResult GetAttributeValue<TAttribute, TResult>(Func<TAttribute, TResult> selector, TResult defaultValue)
       where TAttribute : Attribute
     {
-      var attribs = this.assembly.GetCustomAttributes(typeof(TAttribute), true);
-      return attribs.Length > 0 ? selector((TAttribute)attribs[0]) : defaultValue;
+      var attributes = this.assembly.GetCustomAttributes(typeof(TAttribute), true);
+      return attributes.Length > 0 ? selector((TAttribute)attributes[0]) : defaultValue;
     }
   }
 }

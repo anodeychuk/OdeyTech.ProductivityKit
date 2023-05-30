@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------
-// <copyright file="Accesser.cs" author="Andrii Odeychuk">
+// <copyright file="Accessor.cs" author="Andrii Odeychuk">
 //
 // Copyright (c) Andrii Odeychuk. ALL RIGHTS RESERVED
 // The entire contents of this file is protected by International Copyright Laws.
@@ -14,7 +14,7 @@ namespace OdeyTech.ProductivityKit
   /// <summary>
   /// Provides utility methods for accessing and manipulating objects' properties and fields.
   /// </summary>
-  public static class Accesser
+  public static class Accessor
   {
     /// <summary>
     /// Retrieves a PropertyInfo object for a specified property.
