@@ -218,12 +218,11 @@ string version = productInfo.Version;
 string copyright = productInfo.Copyright;
 ~~~
 
+**Note:** An example of how to use **OdeyTech.ProductivityKit** can be found in the [OdeyTech.WPF.Example.Hospital repository][Example].
+
 ## Getting Started
-To install `OdeyTech.ProductivityKit`, run the following command in the Package Manager Console:
-~~~sh
-Install-Package OdeyTech.ProductivityKit
-~~~
-Alternatively, you can search for OdeyTech.ProductivityKit in the NuGet Package Manager and install it from there.
+
+To start using **OdeyTech.ProductivityKit**, install it as a NuGet package in your C# project.
 
 ## Usage
 To use the library in your project, simply add the following using statements to your C# file:
@@ -247,3 +246,4 @@ For more information, updates, and future releases, follow me on [LinkedIn][LIn]
 [//]: #
    [LIn]: <https://www.linkedin.com/in/anodeychuk/>
    [LICENSE]: <https://github.com/anodeychuk/OdeyTech.ProductivityKit/blob/main/LICENSE>
+   [Example]: <https://github.com/anodeychuk/OdeyTech.WPF.Example.Hospital>
