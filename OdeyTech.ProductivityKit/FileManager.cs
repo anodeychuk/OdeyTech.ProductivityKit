@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using OdeyTech.ProductivityKit.Extension;
 
 namespace OdeyTech.ProductivityKit
 {
@@ -31,40 +32,42 @@ namespace OdeyTech.ProductivityKit
         public static string GetDirectoryByFilePath(string filePath) => Path.GetDirectoryName(filePath);
 
         /// <summary>
-        /// Determines whether a given file path is valid.
+        /// Validates the provided file path to ensure it adheres to the system's file path conventions.
         /// </summary>
-        /// <param name="filePath">The file path to validate.</param>
-        /// <returns>True if the file path is valid, otherwise false.</returns>
+        /// <param name="filePath">The absolute path of the file to be validated, including the file name and its extension.</param>
+        /// <returns>True if the file path is valid and does not contain any illegal characters, otherwise false.</returns>
         public static bool IsValidFilePath(string filePath)
         {
-            if (filePath == null || filePath.IndexOfAny(Path.GetInvalidPathChars()) != -1)
+            if (filePath.IsNullOrEmpty() || filePath.IndexOfAny(Path.GetInvalidPathChars()) != -1)
             {
                 return false;
             }
 
             try
             {
-                var tempFileInfo = new FileInfo(filePath);
+                var _ = new FileInfo(filePath);
                 return true;
             }
             catch (NotSupportedException)
             {
+                // The filePath contains a colon (:) in the middle of the string, which is not supported.
                 return false;
             }
         }
 
         /// <summary>
-        /// Creates a directory if it does not already exist for the specified file path.
+        /// Creates a directory at the specified directory path if it does not already exist.
         /// </summary>
-        /// <param name="fileName">The file path.</param>
-        public static void CreateDirectoryIfNotExists(string fileName)
+        /// <param name="dirPath">The absolute path where the directory should be created, including the directory name.</param>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the provided directory path is not valid or contains illegal characters.</exception>
+        public static void CreateDirectoryIfNotExists(string dirPath)
         {
-            if (!IsValidFilePath(fileName))
+            if (!IsValidFilePath(dirPath))
             {
-                throw new DirectoryNotFoundException();
+                throw new DirectoryNotFoundException($"The provided directory path is not valid or contains illegal characters: {dirPath}");
             }
 
-            var dir = GetDirectoryByFilePath(fileName);
+            var dir = GetDirectoryByFilePath(dirPath);
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -72,31 +75,45 @@ namespace OdeyTech.ProductivityKit
         }
 
         /// <summary>
-        /// Validates whether a file exists at the specified file path.
+        /// Checks whether a file exists at the specified file path.
         /// </summary>
-        /// <param name="fileName">The file path.</param>
-        public static void CheckFileExists(string fileName)
+        /// <param name="filePath">The absolute path of the file to check, including the file name and its extension.</param>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the provided file path is not valid or contains illegal characters.</exception>
+        /// <exception cref="FileNotFoundException">Thrown when no file is found at the provided file path.</exception>
+        public static void CheckFileExists(string filePath)
         {
-            if (!IsValidFilePath(fileName))
+            if (!IsValidFilePath(filePath))
             {
-                throw new DirectoryNotFoundException();
+                throw new DirectoryNotFoundException($"The provided file path is not valid or contains illegal characters: {filePath}");
             }
 
-            if (!File.Exists(fileName))
+            if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException($"No file was found at the provided file path: {filePath}");
             }
         }
 
         /// <summary>
-        /// Reads the content of a file and returns it as a string.
+        /// Reads the content of a file located at the specified file path and returns it as a string.
         /// </summary>
-        /// <param name="filePath">The file path.</param>
-        /// <returns>The content of the file as a string.</returns>
+        /// <param name="filePath">The absolute path of the file to be read. This should include the file name and its extension.</param>
+        /// <returns>A string containing the content of the file.</returns>
+        /// <exception cref="ArgumentException">Thrown when the provided file path is not valid or contains illegal characters.</exception>
+        /// <exception cref="FileNotFoundException">Thrown when no file is found at the provided file path.</exception>
         public static string ReadFile(string filePath)
-            => !(IsValidFilePath(filePath) && File.Exists(filePath))
-                ? throw new FileNotFoundException()
-                : File.ReadAllText(filePath);
+        {
+            if (!IsValidFilePath(filePath))
+            {
+                throw new ArgumentException($"The provided file path is not valid: {filePath}");
+            }
+
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException($"The file at {filePath} could not be found.");
+            }
+
+            return File.ReadAllText(filePath);
+        }
 
         /// <summary>
         /// Saves the content to a file at the specified file path.
@@ -120,7 +137,8 @@ namespace OdeyTech.ProductivityKit
         /// <param name="filename">The filename to process.</param>
         /// <param name="substitutionStr">The string to replace invalid characters with.</param>
         /// <returns>The processed filename with invalid characters replaced.</returns>
-        public static string ReplaceInvalidChars(string filename, string substitutionStr) => string.Join(substitutionStr, filename.Split(Path.GetInvalidFileNameChars()));
+        public static string ReplaceInvalidChars(string filename, string substitutionStr)
+            => string.Join(substitutionStr, filename.Split(Path.GetInvalidFileNameChars()));
 
         /// <summary>
         /// Removes invalid characters from a filename.
