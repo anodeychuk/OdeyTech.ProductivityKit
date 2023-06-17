@@ -24,6 +24,10 @@ namespace OdeyTech.ProductivityKit.Extension
         /// <typeparam name="V">The type of the dictionary's values.</typeparam>
         /// <param name="collection">The dictionary to process.</param>
         /// <param name="condition">The condition to evaluate each item against.</param>
+        /// <remarks>
+        /// This method modifies the original dictionary. It does not return a new dictionary.
+        /// </remarks>
+        /// <exception cref="ArgumentNullException">Thrown when the collection or condition is null.</exception>
         /// <example>
         /// Before:
         ///     var keysToRemove = dictionary.Where(item => item.Value.Age > 30).Select(item => item.Key).ToList();

@@ -22,8 +22,13 @@ namespace OdeyTech.ProductivityKit.Extension
         /// Executes the specified action for each item in the collection.
         /// </summary>
         /// <typeparam name="T">The type of the items in the collection.</typeparam>
-        /// <param name="collection">The collection to process.</param>
-        /// <param name="action">The action to execute for each item.</param>
+        /// <param name="collection">The collection to process. Must not be null or empty.</param>
+        /// <param name="action">The action to execute for each item. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+        /// <remarks>
+        /// This method provides a more functional way to iterate over a collection and perform an action on each item.
+        /// </remarks>
+        /// <example>
         /// Before:
         ///     foreach (var item in collection)
         ///     {
@@ -34,9 +39,14 @@ namespace OdeyTech.ProductivityKit.Extension
         /// </example>
         public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            if (collection.IsNullOrEmpty() || action == null)
+            if (collection.IsNullOrEmpty())
             {
-                return;
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
             }
 
             foreach (T item in collection)
@@ -48,8 +58,12 @@ namespace OdeyTech.ProductivityKit.Extension
         /// <summary>
         /// Executes the specified action for each item in the collection.
         /// </summary>
-        /// <param name="collection">The collection to process.</param>
-        /// <param name="action">The action to execute for each item.</param>
+        /// <param name="collection">The collection to process. Must not be null or empty.</param>
+        /// <param name="action">The action to execute for each item. Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+        /// <remarks>
+        /// This method provides a more functional way to iterate over a non-generic collection and perform an action on each item.
+        /// </remarks>
         public static void ForEach(this IEnumerable collection, Action<object> action) => collection.Cast<object>().ForEach(action);
 
         /// <summary>

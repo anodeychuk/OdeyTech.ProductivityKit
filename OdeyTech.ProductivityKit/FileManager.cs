@@ -67,10 +67,9 @@ namespace OdeyTech.ProductivityKit
                 throw new DirectoryNotFoundException($"The provided directory path is not valid or contains illegal characters: {dirPath}");
             }
 
-            var dir = GetDirectoryByFilePath(dirPath);
-            if (!Directory.Exists(dir))
+            if (!Directory.Exists(dirPath))
             {
-                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(dirPath);
             }
         }
 
