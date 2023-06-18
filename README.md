@@ -1,4 +1,4 @@
-# OdeyTech.ProductivityKit
+﻿# OdeyTech.ProductivityKit
 
 **OdeyTech.ProductivityKit** is a C# .NET library designed to boost your productivity by providing an extensive set of tools, extensions, and utilities that simplify your day-to-day development tasks. This package is distributed as a NuGet package and can be easily integrated into your projects, saving you time and effort.
 
@@ -17,7 +17,12 @@
 6. **Build Information**: Retrieve and display build data, such as version number and build date, to keep track of your project's progress.
 7. **Readability**: Improve the readability of your code by leveraging utility classes and methods designed to make your code cleaner and more maintainable.
 
+## Examples
+
+Detailed examples of how to use the features of **OdeyTech.ProductivityKit** can be found in the [OdeyTech.WPF.Example.Hospital repository][Example] repository.
+
 ### Highlight: DictionaryExtension
+
 The `DictionaryExtension` class is a part of the `OdeyTech.ProductivityKit.Extension` namespace and provides extension methods for Dictionary collections.
 
 Example usage:
@@ -37,6 +42,7 @@ usersWithAges.RemoveWhere(item => item.Value > 30);
 ~~~
 
 ### Highlight: IEnumerableExtension
+
 The `IEnumerableExtension` class is a part of the `OdeyTech.ProductivityKit.Extension` namespace and provides valuable extension methods to work with collections more efficiently.
 
 - **ForEach** - Execute a specified action for each item in the collection.
@@ -62,6 +68,7 @@ bool isEmpty = myList.IsNullOrEmpty();
 ~~~
 
 ### Highlight: IntExtension
+
 The `IntExtension` class is part of the `OdeyTech.ProductivityKit.Extension` namespace and provides valuable extension methods related to`DateTime` for `int` objects.
 
 Example usage:
@@ -77,6 +84,7 @@ DateTime februaryDate = 14.February(2023);
 ~~~
 
 ### Highlight: StringExtension
+
 The `StringExtension` class is a part of the `OdeyTech.ProductivityKit.Extension` namespace provides useful extension methods to work with strings.
 
 Example usage:
@@ -97,6 +105,7 @@ bool isFilled = someString.IsFilled();
 ~~~
 
 ### Highlight: CharExtension
+
 The `CharExtension` class is part of the `OdeyTech.ProductivityKit.Extension` namespace and provides extension methods for char type, making it easier to perform common checks.
 
 Example usage:
@@ -115,6 +124,7 @@ bool isLetterCharLetter = letterChar.IsLetter();
 ~~~
 
 ### Highlight: Enum
+
 The `ButtonName` enumeration is a part of the `OdeyTech.ProductivityKit.Enum` namespace and provides a standardized set of button names which can be utilized across your application for consistency and better maintainability.
 
 Example usage:
@@ -138,6 +148,7 @@ public void HandleButtonClick(ButtonName buttonName)
 ~~~
 
 ### Highlight: Accessor
+
 The `Accessor` class is a part of the `OdeyTech.ProductivityKit` namespace and provides utility methods for accessing and manipulating objects' properties and fields.
 
 Example usage:
@@ -173,6 +184,7 @@ class Program
 ~~~
 
 ### Highlight: FileManager
+
 The `FileManager` class is a part of the `OdeyTech.ProductivityKit` namespace and provides utility methods for working with files and directories.
 
 Example usage:
@@ -200,6 +212,7 @@ string appFolder = FileManager.GetApplicationFolder();
 ~~~
 
 ### Highlight: ProductInfo
+
 The `ProductInfo` class is a part of the `OdeyTech.ProductivityKit` namespace and provides information about a product's assembly, such as copyright, application name, description, and version.
 
 Example usage:
@@ -218,13 +231,12 @@ string version = productInfo.Version;
 string copyright = productInfo.Copyright;
 ~~~
 
-**Note:** An example of how to use **OdeyTech.ProductivityKit** can be found in the [OdeyTech.WPF.Example.Hospital repository][Example].
-
 ## Getting Started
 
 To start using **OdeyTech.ProductivityKit**, install it as a NuGet package in your C# project.
 
 ## Usage
+
 To use the library in your project, simply add the following using statements to your C# file:
 
 ~~~csharp
@@ -232,15 +244,19 @@ using OdeyTech.ProductivityKit;
 using OdeyTech.ProductivityKit.Extension;
 using OdeyTech.ProductivityKit.Enum;
 ~~~
-Now you can start using the various classes, methods, and extensions provided by `OdeyTech.ProductivityKit`.
+
+Now you can start using the various classes, methods, and extensions provided by **OdeyTech.ProductivityKit**.
 
 ## Contributing
-We welcome contributions to `OdeyTech.ProductivityKit`! Feel free to submit pull requests or raise issues to help us improve the library.
+
+We welcome contributions to **OdeyTech.ProductivityKit**! Feel free to submit pull requests or raise issues to help us improve the library.
 
 ## License
-`OdeyTech.ProductivityKit` is released under the [Non-Commercial License][LICENSE]. See the LICENSE file for more information.
+
+**OdeyTech.ProductivityKit** is released under the [Non-Commercial License][LICENSE]. See the LICENSE file for more information.
 
 ## Stay in Touch
+
 For more information, updates, and future releases, follow me on [LinkedIn][LIn] I'd be happy to connect and discuss any questions or ideas you might have.
 
 [//]: #
