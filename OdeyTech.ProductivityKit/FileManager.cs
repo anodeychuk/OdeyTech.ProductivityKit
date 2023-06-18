@@ -62,14 +62,21 @@ namespace OdeyTech.ProductivityKit
         /// <exception cref="DirectoryNotFoundException">Thrown when the provided directory path is not valid or contains illegal characters.</exception>
         public static void CreateDirectoryIfNotExists(string dirPath)
         {
-            if (!IsValidFilePath(dirPath))
+            try
             {
-                throw new DirectoryNotFoundException($"The provided directory path is not valid or contains illegal characters: {dirPath}");
-            }
+                if (!IsValidFilePath(dirPath))
+                {
+                    throw new DirectoryNotFoundException($"The provided directory path is not valid or contains illegal characters: {dirPath}");
+                }
 
-            if (!Directory.Exists(dirPath))
+                if (!Directory.Exists(dirPath))
+                {
+                    Directory.CreateDirectory(dirPath);
+                }
+            }
+            catch (Exception ex)
             {
-                Directory.CreateDirectory(dirPath);
+                throw new IOException($"An error occurred while trying to create the directory at {dirPath}.", ex);
             }
         }
 
@@ -101,17 +108,24 @@ namespace OdeyTech.ProductivityKit
         /// <exception cref="FileNotFoundException">Thrown when no file is found at the provided file path.</exception>
         public static string ReadFile(string filePath)
         {
-            if (!IsValidFilePath(filePath))
+            try
             {
-                throw new ArgumentException($"The provided file path is not valid: {filePath}");
-            }
+                if (!IsValidFilePath(filePath))
+                {
+                    throw new ArgumentException($"The provided file path is not valid: {filePath}");
+                }
 
-            if (!File.Exists(filePath))
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException($"The file at {filePath} could not be found.");
+                }
+
+                return File.ReadAllText(filePath);
+            }
+            catch (Exception ex)
             {
-                throw new FileNotFoundException($"The file at {filePath} could not be found.");
+                throw new IOException($"An error occurred while trying to read the file at {filePath}.", ex);
             }
-
-            return File.ReadAllText(filePath);
         }
 
         /// <summary>
@@ -121,13 +135,20 @@ namespace OdeyTech.ProductivityKit
         /// <param name="value">The content to save.</param>
         public static void SaveFile(string documentPath, string value)
         {
-            var dir = Path.GetDirectoryName(documentPath);
-            if (!Directory.Exists(dir))
+            try
             {
-                Directory.CreateDirectory(dir);
-            }
+                var dir = Path.GetDirectoryName(documentPath);
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
 
-            File.WriteAllText(documentPath, value, Encoding.Unicode);
+                File.WriteAllText(documentPath, value, Encoding.Unicode);
+            }
+            catch (Exception ex)
+            {
+                throw new IOException($"An error occurred while trying to save the file at {documentPath}.", ex);
+            }
         }
 
         /// <summary>

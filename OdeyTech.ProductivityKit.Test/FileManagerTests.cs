@@ -111,9 +111,6 @@ namespace OdeyTech.ProductivityKit.Test
             }
         }
 
-        private string GetExecutingAssemblyDirectory()
-        {
-            return Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        }
+        private string GetExecutingAssemblyDirectory() => Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
     }
 }
