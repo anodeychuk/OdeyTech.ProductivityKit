@@ -22,7 +22,7 @@ namespace OdeyTech.ProductivityKit.Extension
         /// Executes the specified action for each item in the collection.
         /// </summary>
         /// <typeparam name="T">The type of the items in the collection.</typeparam>
-        /// <param name="collection">The collection to process. Must not be null or empty.</param>
+        /// <param name="collection">The collection to process. Must not be null.</param>
         /// <param name="action">The action to execute for each item. Must not be null.</param>
         /// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
         /// <remarks>
@@ -39,7 +39,7 @@ namespace OdeyTech.ProductivityKit.Extension
         /// </example>
         public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            if (collection.IsNullOrEmpty())
+            if (collection == null)
             {
                 throw new ArgumentNullException(nameof(collection));
             }
