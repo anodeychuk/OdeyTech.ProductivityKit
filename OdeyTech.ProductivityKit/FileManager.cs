@@ -60,6 +60,7 @@ namespace OdeyTech.ProductivityKit
         /// </summary>
         /// <param name="dirPath">The absolute path where the directory should be created, including the directory name.</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the provided directory path is not valid or contains illegal characters.</exception>
+        /// <exception cref="IOException">Thrown when an error occurs while creating the directory.</exception>
         public static void CreateDirectoryIfNotExists(string dirPath)
         {
             try
@@ -106,6 +107,7 @@ namespace OdeyTech.ProductivityKit
         /// <returns>A string containing the content of the file.</returns>
         /// <exception cref="ArgumentException">Thrown when the provided file path is not valid or contains illegal characters.</exception>
         /// <exception cref="FileNotFoundException">Thrown when no file is found at the provided file path.</exception>
+        /// <exception cref="IOException">Thrown when an error occurs while reading the file.</exception>
         public static string ReadFile(string filePath)
         {
             try
@@ -133,6 +135,7 @@ namespace OdeyTech.ProductivityKit
         /// </summary>
         /// <param name="documentPath">The file path.</param>
         /// <param name="value">The content to save.</param>
+        /// <exception cref="IOException">Thrown when an error occurs while saving the file.</exception>
         public static void SaveFile(string documentPath, string value)
         {
             try

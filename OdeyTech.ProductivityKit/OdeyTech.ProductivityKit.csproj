@@ -2,23 +2,22 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <LangVersion>9.0</LangVersion>
+    <Product>OdeyTech.ProductivityKit</Product>
     <AssemblyTitle>OdeyTech.ProductivityKit</AssemblyTitle>
     <Company>Andrii Odeychuk</Company>
-    <Product>OdeyTech.ProductivityKit</Product>
+    <Authors>$(Company)</Authors>    
     <Copyright>Copyright © $(Company) 2023.</Copyright>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
-    <AssemblyVersion>0.0.27</AssemblyVersion>
-    <Authors>$(Company)</Authors>
+    <OutputPath>bin\$(Configuration)\</OutputPath>	
+    <AssemblyVersion>0.0.39</AssemblyVersion>  
+    <Version>$(AssemblyVersion)</Version>	
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Package contains tools to improve the performance and usability of C# .NET development.</Description>
     <RepositoryUrl>https://github.com/anodeychuk/OdeyTech.ProductivityKit</RepositoryUrl>
-    <Version>$(AssemblyVersion)</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/anodeychuk/OdeyTech.ProductivityKit</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageTags>Productivity, OdeyTech, Extensions, Monads, Reflection, File Management, Build Information, Utilities</PackageTags>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageTags>Productivity, OdeyTech, Extensions, Monads, Reflection, File Management, Build Information, Utilities</PackageTags> 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>

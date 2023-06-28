@@ -40,15 +40,8 @@ namespace OdeyTech.ProductivityKit.Extension
         /// </example>
         public static void RemoveWhere<T, V>(this Dictionary<T, V> collection, Func<KeyValuePair<T, V>, bool> condition)
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException(nameof(collection));
-            }
-
-            if (condition == null)
-            {
-                throw new ArgumentNullException(nameof(condition));
-            }
+            ThrowHelper.ThrowIfNull(collection, nameof(collection));
+            ThrowHelper.ThrowIfNull(condition, nameof(condition));
 
             var keysToRemove = collection.Where(item => condition.Invoke(item)).Select(item => item.Key).ToList();
             foreach (T key in keysToRemove)

@@ -28,7 +28,8 @@ namespace OdeyTech.ProductivityKit
         /// <param name="assembly">The assembly to retrieve product information from.</param>
         public ProductInfo(Assembly assembly)
         {
-            this.assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
+            ThrowHelper.ThrowIfNull(assembly, nameof(assembly));
+            this.assembly = assembly;
         }
 
         /// <summary>

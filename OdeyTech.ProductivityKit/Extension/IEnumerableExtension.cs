@@ -39,15 +39,8 @@ namespace OdeyTech.ProductivityKit.Extension
         /// </example>
         public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException(nameof(collection));
-            }
-
-            if (action == null)
-            {
-                throw new ArgumentNullException(nameof(action));
-            }
+            ThrowHelper.ThrowIfNull(collection, nameof(collection));
+            ThrowHelper.ThrowIfNull(action, nameof(action));
 
             foreach (T item in collection)
             {
